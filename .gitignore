@@ -9,3 +9,4 @@ agent/target/
 *.obj
 .DS_Store
 Thumbs.db
+tools/**/target/
