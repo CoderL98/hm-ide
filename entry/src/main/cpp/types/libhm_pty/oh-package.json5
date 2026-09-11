@@ -1,0 +1,6 @@
+{
+  "name": "libhm_pty.so",
+  "types": "./Index.d.ts",
+  "version": "1.0.0",
+  "description": "hm-ide Native C++ PTY NAPI module"
+}

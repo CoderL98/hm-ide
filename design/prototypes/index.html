@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>鸿蒙原生IDE — 原型画廊</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="gallery-body">
+  <div class="gallery-inner">
+    <header class="gallery-header">
+      <div class="gallery-eyebrow">hm-ide · static prototypes</div>
+      <h1 class="gallery-title">鸿蒙原生IDE</h1>
+      <p class="gallery-desc">
+        多端静态高保真原型：桌面 / 平板（竖·横） / 手机（竖·横） / 折叠屏横屏。设计语言对齐 shadcn/ui zinc 深色主题，克制、紧凑、偏 IDE 专业密度。
+      </p>
+      <div style="margin-top:16px;">
+        <button class="theme-toggle" type="button" onclick="toggleTheme()">切换浅色 / 深色</button>
+      </div>
+    </header>
+
+    <div class="gallery-note">
+      <strong>方向说明：</strong>运行时支持方向锁定与横竖屏切换。以下原型按设备形态与方向拆分展示；折叠屏展开横屏采用近平板 IDE 密度，同时保留手机态顶栏与状态栏。
+    </div>
+
+    <div class="gallery-section">桌面</div>
+    <div class="gallery-grid">
+      <a class="gallery-card" href="desktop.html">
+        <div class="gallery-preview">
+          <div class="gallery-preview-frame" style="width:78%;height:72%;display:flex;overflow:hidden;">
+            <div style="width:8%;background:var(--activity);border-right:1px solid var(--border);"></div>
+            <div style="width:22%;background:var(--sidebar);border-right:1px solid var(--border);"></div>
+            <div style="flex:1;background:var(--editor);display:flex;flex-direction:column;">
+              <div style="height:14%;background:var(--tab-inactive);border-bottom:1px solid var(--border);"></div>
+              <div style="flex:1;"></div>
+              <div style="height:22%;background:var(--card);border-top:1px solid var(--border);"></div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <h3>桌面端</h3>
+          <p>活动栏 · 资源管理器 · 多标签编辑器 · 终端面板 · 状态栏</p>
+          <span class="gallery-badge">1440 × 900</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="gallery-section">平板</div>
+    <div class="gallery-grid">
+      <a class="gallery-card" href="tablet.html">
+        <div class="gallery-preview">
+          <div class="gallery-preview-frame" style="width:78%;height:70%;display:flex;flex-direction:column;overflow:hidden;">
+            <div style="height:12%;background:var(--card);border-bottom:1px solid var(--border);"></div>
+            <div style="flex:1;display:flex;">
+              <div style="width:26%;background:var(--sidebar);border-right:1px solid var(--border);"></div>
+              <div style="flex:1;background:var(--editor);"></div>
+            </div>
+            <div style="height:18%;background:var(--card);border-top:1px solid var(--border);"></div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <h3>平板横屏</h3>
+          <p>双栏资源管理器 + 编辑器，底部面板可折叠</p>
+          <span class="gallery-badge">1024 × 768</span>
+        </div>
+      </a>
+
+      <a class="gallery-card" href="tablet-portrait.html">
+        <div class="gallery-preview">
+          <div class="gallery-preview-frame" style="width:42%;height:82%;display:flex;flex-direction:column;overflow:hidden;">
+            <div style="height:10%;background:var(--card);border-bottom:1px solid var(--border);"></div>
+            <div style="flex:1;display:flex;">
+              <div style="width:30%;background:var(--sidebar);border-right:1px solid var(--border);"></div>
+              <div style="flex:1;background:var(--editor);"></div>
+            </div>
+            <div style="height:16%;background:var(--card);border-top:1px solid var(--border);"></div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <h3>平板竖屏</h3>
+          <p>窄侧栏旁挂编辑器，纵向空间留给代码与终端</p>
+          <span class="gallery-badge">768 × 1024</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="gallery-section">手机 / 折叠屏</div>
+    <div class="gallery-grid">
+      <a class="gallery-card" href="phone.html">
+        <div class="gallery-preview">
+          <div class="gallery-preview-frame" style="width:36%;height:82%;border-radius:10px;display:flex;flex-direction:column;overflow:hidden;">
+            <div style="height:10%;background:var(--card);border-bottom:1px solid var(--border);"></div>
+            <div style="flex:1;background:var(--editor);"></div>
+            <div style="height:14%;background:var(--card);border-top:1px solid var(--border);"></div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <h3>手机竖屏</h3>
+          <p>单栏编辑焦点 · 底栏导航 · 文件 Sheet 入口</p>
+          <span class="gallery-badge">390 × 844</span>
+        </div>
+      </a>
+
+      <a class="gallery-card" href="phone-landscape.html">
+        <div class="gallery-preview">
+          <div class="gallery-preview-frame" style="width:82%;height:48%;border-radius:8px;display:flex;overflow:hidden;">
+            <div style="width:8%;background:var(--card);border-right:1px solid var(--border);"></div>
+            <div style="width:24%;background:var(--sidebar);border-right:1px solid var(--border);"></div>
+            <div style="flex:1;background:var(--editor);display:flex;flex-direction:column;">
+              <div style="height:18%;background:var(--card);border-bottom:1px solid var(--border);"></div>
+              <div style="flex:1;"></div>
+              <div style="height:14%;background:var(--status);border-top:1px solid var(--border);"></div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <h3>手机横屏</h3>
+          <p>侧轨导航 + 窄资源管理器 + 编辑器，紧凑状态栏</p>
+          <span class="gallery-badge">844 × 390</span>
+        </div>
+      </a>
+
+      <a class="gallery-card" href="phone-fold-landscape.html">
+        <div class="gallery-preview">
+          <div class="gallery-preview-frame" style="width:86%;height:62%;border-radius:8px;display:flex;flex-direction:column;overflow:hidden;position:relative;">
+            <div style="height:10%;background:var(--card);border-bottom:1px solid var(--border);"></div>
+            <div style="flex:1;display:flex;">
+              <div style="width:7%;background:var(--activity);border-right:1px solid var(--border);"></div>
+              <div style="width:24%;background:var(--sidebar);border-right:1px solid var(--border);"></div>
+              <div style="flex:1;background:var(--editor);"></div>
+            </div>
+            <div style="height:16%;background:var(--card);border-top:1px solid var(--border);"></div>
+            <div style="position:absolute;left:50%;top:14%;bottom:18%;width:1px;background:var(--border);opacity:0.5;"></div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <h3>折叠屏横屏</h3>
+          <p>近平板 IDE 密度：活动栏 · 资源管理器 · 编辑器 · 底栏终端</p>
+          <span class="gallery-badge">1000 × 600</span>
+        </div>
+      </a>
+    </div>
+
+    <p style="margin-top:40px;font-size:12.5px;color:var(--muted-foreground);line-height:1.6;">
+      本地静态原型，无需构建。共享 <code style="font-family:var(--font-mono);font-size:12px;">styles.css</code>。详见 README.md。
+    </p>
+  </div>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    }
+  </script>
+</body>
+</html>

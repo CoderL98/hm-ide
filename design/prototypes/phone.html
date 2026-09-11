@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>鸿蒙原生IDE — 手机竖屏</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+      padding: 16px;
+      background: #050506;
+    }
+    .phone-editor .gutter { width: 36px; }
+    .phone-editor .gutter div { padding-right: 8px; font-size: 11px; }
+    .phone-editor .code { font-size: 12.5px; }
+    .phone-editor .code-line { padding-right: 12px; }
+    .sheet-hint {
+      margin: 8px 12px 12px;
+      padding: 10px 12px;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      font-size: 12px;
+      color: var(--muted-foreground);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .run-fab {
+      position: absolute;
+      right: 16px;
+      bottom: 72px;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: var(--primary-foreground);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      z-index: 2;
+    }
+    .phone-relative { position: relative; flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  </style>
+</head>
+<body>
+  <div class="phone-shell">
+    <div class="phone-status">
+      <span>9:41</span>
+      <span style="opacity:0.55;font-weight:400;font-size:11px;">手机竖屏</span>
+      <div style="display:flex;gap:6px;align-items:center;opacity:0.85;">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/><line x1="2" x2="22" y1="20" y2="20"/></svg>
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 11v2"/></svg>
+      </div>
+    </div>
+
+    <header class="phone-header">
+      <button class="sidebar-icon-btn" type="button" title="文件" style="width:32px;height:32px;">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <h1>Index.ets</h1>
+      <button class="sidebar-icon-btn" type="button" title="更多" style="width:32px;height:32px;">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+      </button>
+      <button class="theme-toggle" type="button" onclick="toggleTheme()" style="margin-left:4px;">主题</button>
+    </header>
+
+    <div class="phone-relative">
+      <button type="button" class="phone-file-chip" title="打开文件列表">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+        entry/src/pages/Index.ets
+        <span class="tab-dirty" style="margin-left:2px;"></span>
+        <svg class="icon icon-sm" viewBox="0 0 24 24" style="margin-left:4px;opacity:0.6;"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+
+      <div class="phone-editor editor-pane" style="border:none;">
+        <div class="gutter" aria-hidden="true">
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+          <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+          <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+          <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
+          <div>21</div><div>22</div>
+        </div>
+        <div class="code">
+          <div class="code-line"><span class="ln-content"><span class="dec">@Entry</span></span></div>
+          <div class="code-line"><span class="ln-content"><span class="dec">@Component</span></span></div>
+          <div class="code-line"><span class="ln-content"><span class="kw">struct</span> <span class="ty">Index</span> <span class="pun">{</span></span></div>
+          <div class="code-line"><span class="ln-content">  <span class="dec">@State</span> <span class="id">message</span><span class="pun">:</span> <span class="ty">string</span> <span class="op">=</span></span></div>
+          <div class="code-line"><span class="ln-content">    <span class="str">'Hello HarmonyOS'</span><span class="pun">;</span></span></div>
+          <div class="code-line"><span class="ln-content">  <span class="dec">@State</span> <span class="id">count</span><span class="pun">:</span> <span class="ty">number</span> <span class="op">=</span> <span class="num">0</span><span class="pun">;</span></span></div>
+          <div class="code-line"><span class="ln-content">&nbsp;</span></div>
+          <div class="code-line"><span class="ln-content">  <span class="fn">build</span><span class="pun">()</span> <span class="pun">{</span></span></div>
+          <div class="code-line"><span class="ln-content">    <span class="ty">Column</span><span class="pun">()</span> <span class="pun">{</span></span></div>
+          <div class="code-line"><span class="ln-content">      <span class="ty">Text</span><span class="pun">(</span><span class="kw">this</span><span class="pun">.</span><span class="id">message</span><span class="pun">)</span></span></div>
+          <div class="code-line current"><span class="ln-content">        <span class="pun">.</span><span class="fn">fontSize</span><span class="pun">(</span><span class="num">24</span><span class="pun">)</span></span></div>
+          <div class="code-line"><span class="ln-content">        <span class="pun">.</span><span class="fn">fontWeight</span><span class="pun">(</span><span class="ty">FontWeight</span><span class="pun">.</span><span class="id">Medium</span><span class="pun">)</span></span></div>
+          <div class="code-line"><span class="ln-content">&nbsp;</span></div>
+          <div class="code-line"><span class="ln-content">      <span class="ty">Text</span><span class="pun">(</span><span class="str">`点击：${</span><span class="kw">this</span><span class="pun">.</span><span class="id">count</span><span class="str">}`</span><span class="pun">)</span></span></div>
+          <div class="code-line"><span class="ln-content">        <span class="pun">.</span><span class="fn">fontColor</span><span class="pun">(</span><span class="str">'#A1A1AA'</span><span class="pun">)</span></span></div>
+          <div class="code-line"><span class="ln-content">&nbsp;</span></div>
+          <div class="code-line"><span class="ln-content">      <span class="ty">Button</span><span class="pun">(</span><span class="str">'增加'</span><span class="pun">)</span></span></div>
+          <div class="code-line"><span class="ln-content">        <span class="pun">.</span><span class="fn">onClick</span><span class="pun">(()</span> <span class="op">=&gt;</span> <span class="pun">{</span></span></div>
+          <div class="code-line"><span class="ln-content">          <span class="kw">this</span><span class="pun">.</span><span class="id">count</span> <span class="op">+=</span> <span class="num">1</span><span class="pun">;</span></span></div>
+          <div class="code-line"><span class="ln-content">        <span class="pun">})</span></span></div>
+          <div class="code-line"><span class="ln-content">    <span class="pun">}</span></span></div>
+          <div class="code-line"><span class="ln-content">  <span class="pun">}</span></span></div>
+          <div class="code-line"><span class="ln-content"><span class="pun">}</span></span></div>
+        </div>
+      </div>
+
+      <div class="sheet-hint">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+        上滑打开文件列表 · Index.ets · main_pages.json · module.json5
+      </div>
+
+      <button class="run-fab" type="button" title="运行">
+        <svg class="icon" viewBox="0 0 24 24" style="stroke-width:2;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+      </button>
+    </div>
+
+    <nav class="phone-nav" aria-label="主导航">
+      <button class="phone-nav-item" type="button">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        文件
+      </button>
+      <button class="phone-nav-item active" type="button">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        编辑
+      </button>
+      <button class="phone-nav-item" type="button">
+        <svg class="icon" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+        运行
+      </button>
+      <button class="phone-nav-item" type="button">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        设置
+      </button>
+    </nav>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    }
+  </script>
+</body>
+</html>

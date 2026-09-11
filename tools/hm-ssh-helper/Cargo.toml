@@ -1,0 +1,16 @@
+[package]
+name = "hm-ssh-helper"
+version = "0.1.0"
+edition = "2021"
+description = "Desktop SSH helper for hm-ide: detect arch, SFTP upload, start agent, LocalForward"
+license = "MIT"
+
+[[bin]]
+name = "hm-ssh-helper"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+ssh2 = "0.9"
+anyhow = "1"
+serde_json = "1"

@@ -1,0 +1,11 @@
+agent/target/
+**/node_modules/
+**/.git/
+**/CMakeFiles/
+**/build/
+**/.hvigor/
+**/oh_modules/
+*.o
+*.obj
+.DS_Store
+Thumbs.db

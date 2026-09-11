@@ -1,0 +1,39 @@
+[package]
+name = "hm-ide-agent"
+version = "0.2.0"
+edition = "2021"
+description = "HM-IDE remote agent — FS + PTY over WebSocket JSON-RPC (bind 127.0.0.1)"
+license = "MIT"
+authors = ["CoderL98"]
+
+[[bin]]
+name = "hm-ide-agent"
+path = "src/main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+axum = { version = "0.7", features = ["ws"] }
+tower-http = { version = "0.5", features = ["cors"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+clap = { version = "4", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+portable-pty = "0.8"
+uuid = { version = "1", features = ["v4"] }
+futures-util = "0.3"
+bytes = "1"
+base64 = "0.22"
+thiserror = "1"
+anyhow = "1"
+tokio-stream = "0.1"
+notify = "6"
+walkdir = "2"
+ignore = "0.4"
+git2 = { version = "0.19", default-features = false, features = ["vendored-libgit2"] }
+regex = "1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

@@ -1,0 +1,25 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "鸿蒙原生IDE 入口模块" },
+    { "name": "EntryAbility_desc", "value": "鸿蒙原生IDE" },
+    { "name": "EntryAbility_label", "value": "鸿蒙原生IDE" },
+    { "name": "explorer", "value": "资源管理器" },
+    { "name": "search", "value": "搜索" },
+    { "name": "scm", "value": "源代码管理" },
+    { "name": "extensions", "value": "扩展" },
+    { "name": "settings", "value": "设置" },
+    { "name": "terminal", "value": "终端" },
+    { "name": "output", "value": "输出" },
+    { "name": "problems", "value": "问题" },
+    { "name": "new_file", "value": "新建文件" },
+    { "name": "new_folder", "value": "新建文件夹" },
+    { "name": "rename", "value": "重命名" },
+    { "name": "delete", "value": "删除" },
+    { "name": "save", "value": "保存" },
+    { "name": "theme", "value": "主题" },
+    { "name": "files", "value": "文件" },
+    { "name": "editor_tab", "value": "编辑" },
+    { "name": "run", "value": "运行" },
+    { "name": "internet_reason", "value": "连接远程 hm-ide-agent（经 SSH LocalForward 的 WebSocket）" }
+  ]
+}

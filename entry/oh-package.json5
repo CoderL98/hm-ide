@@ -1,0 +1,14 @@
+{
+  "name": "entry",
+  "version": "1.0.0",
+  "description": "鸿蒙原生IDE 主模块",
+  "main": "",
+  "author": "CoderL98",
+  "license": "MIT",
+  "dependencies": {
+    "libhm_pty.so": "file:./src/main/cpp/types/libhm_pty",
+    "libhm_git.so": "file:./src/main/cpp/types/libhm_git",
+    "libhm_clang.so": "file:./src/main/cpp/types/libhm_clang",
+    "libhm_ssh.so": "file:./src/main/cpp/types/libhm_ssh"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "float": [
+    { "name": "radius", "value": "6vp" },
+    { "name": "activity_bar_width", "value": "48vp" },
+    { "name": "sidebar_width", "value": "260vp" },
+    { "name": "sidebar_width_tablet", "value": "220vp" },
+    { "name": "sidebar_width_portrait", "value": "200vp" },
+    { "name": "titlebar_height", "value": "36vp" },
+    { "name": "tab_bar_height", "value": "35vp" },
+    { "name": "status_bar_height", "value": "24vp" },
+    { "name": "bottom_panel_height", "value": "180vp" },
+    { "name": "phone_nav_height", "value": "56vp" },
+    { "name": "font_ui", "value": "13fp" },
+    { "name": "font_code", "value": "13fp" },
+    { "name": "font_small", "value": "11.5fp" }
+  ]
+}

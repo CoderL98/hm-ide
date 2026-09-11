@@ -1,0 +1,6 @@
+{
+  "name": "libhm_ssh.so",
+  "types": "./Index.d.ts",
+  "version": "1.0.0",
+  "description": "SSH LocalForward / SFTP stub for hm-ide-agent auto-deploy"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "示例工程",
+  "main": "",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {}
+}

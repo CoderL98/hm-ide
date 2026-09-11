@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>鸿蒙原生IDE — 平板横屏</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+      padding: 20px;
+      background: #050506;
+    }
+    .tablet-frame {
+      width: 1024px;
+      height: 768px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 24px 56px rgba(0,0,0,0.45);
+      display: flex;
+      flex-direction: column;
+      background: var(--background);
+    }
+    .tablet-frame.collapsed .bottom-panel {
+      height: 32px;
+    }
+    .tablet-frame.collapsed .panel-body {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="tablet-frame tablet-shell" id="tablet">
+    <header class="tablet-topbar">
+      <button class="sidebar-icon-btn" type="button" title="菜单" style="width:28px;height:28px;">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <div class="tablet-project">
+        HelloWorld
+        <span>平板横屏</span>
+      </div>
+      <div style="flex:1"></div>
+      <button class="sidebar-icon-btn" type="button" title="搜索" style="width:28px;height:28px;">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <button class="sidebar-icon-btn" type="button" title="运行" style="width:28px;height:28px;color:var(--foreground);">
+        <svg class="icon" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+      </button>
+      <button class="theme-toggle" type="button" onclick="toggleTheme()">主题</button>
+    </header>
+
+    <div class="workspace" style="flex:1;">
+      <aside class="sidebar" aria-label="资源管理器">
+        <div class="sidebar-header">
+          <span>资源管理器</span>
+          <div class="sidebar-header-actions">
+            <button class="sidebar-icon-btn" type="button" title="新建">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="tree">
+          <div class="tree-folder-label">
+            <svg class="icon tree-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            HELLOWORLD
+          </div>
+          <div class="tree-item indent-1">
+            <svg class="icon tree-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+            entry
+          </div>
+          <div class="tree-item indent-2 active">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            Index.ets
+          </div>
+          <div class="tree-item indent-2">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            main_pages.json
+          </div>
+          <div class="tree-item indent-1">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            module.json5
+          </div>
+          <div class="tree-item indent-1">
+            <svg class="icon tree-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            resources
+          </div>
+          <div class="tree-item indent-1">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            oh-package.json5
+          </div>
+        </div>
+      </aside>
+
+      <div class="splitter-v"></div>
+
+      <div class="editor-column">
+        <div class="tab-bar">
+          <div class="tab active">
+            Index.ets
+            <span class="tab-dirty"></span>
+            <button class="tab-close" type="button" aria-label="关闭">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <div class="tab">
+            main_pages.json
+            <button class="tab-close" type="button" aria-label="关闭">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <div class="tab">
+            module.json5
+            <button class="tab-close" type="button" aria-label="关闭">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="breadcrumb">
+          <span>entry</span><span class="sep">/</span>
+          <span>src</span><span class="sep">/</span>
+          <span>pages</span><span class="sep">/</span>
+          <span class="current">Index.ets</span>
+        </div>
+
+        <div class="editor-pane">
+          <div class="gutter" aria-hidden="true">
+            <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+            <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+            <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+            <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
+            <div>21</div><div>22</div><div>23</div><div>24</div>
+          </div>
+          <div class="code">
+            <div class="code-line"><span class="ln-content"><span class="dec">@Entry</span></span></div>
+            <div class="code-line"><span class="ln-content"><span class="dec">@Component</span></span></div>
+            <div class="code-line"><span class="ln-content"><span class="kw">struct</span> <span class="ty">Index</span> <span class="pun">{</span></span></div>
+            <div class="code-line"><span class="ln-content">  <span class="dec">@State</span> <span class="id">message</span><span class="pun">:</span> <span class="ty">string</span> <span class="op">=</span> <span class="str">'Hello HarmonyOS'</span><span class="pun">;</span></span></div>
+            <div class="code-line"><span class="ln-content">  <span class="dec">@State</span> <span class="id">count</span><span class="pun">:</span> <span class="ty">number</span> <span class="op">=</span> <span class="num">0</span><span class="pun">;</span></span></div>
+            <div class="code-line"><span class="ln-content">&nbsp;</span></div>
+            <div class="code-line"><span class="ln-content">  <span class="fn">build</span><span class="pun">()</span> <span class="pun">{</span></span></div>
+            <div class="code-line"><span class="ln-content">    <span class="ty">Column</span><span class="pun">()</span> <span class="pun">{</span></span></div>
+            <div class="code-line"><span class="ln-content">      <span class="ty">Text</span><span class="pun">(</span><span class="kw">this</span><span class="pun">.</span><span class="id">message</span><span class="pun">)</span></span></div>
+            <div class="code-line"><span class="ln-content">        <span class="pun">.</span><span class="fn">fontSize</span><span class="pun">(</span><span class="num">28</span><span class="pun">)</span></span></div>
+            <div class="code-line current"><span class="ln-content">        <span class="pun">.</span><span class="fn">fontWeight</span><span class="pun">(</span><span class="ty">FontWeight</span><span class="pun">.</span><span class="id">Medium</span><span class="pun">)</span></span></div>
+            <div class="code-line"><span class="ln-content">        <span class="pun">.</span><span class="fn">margin</span><span class="pun">({</span> <span class="id">bottom</span><span class="pun">:</span> <span class="num">16</span> <span class="pun">})</span></span></div>
+            <div class="code-line"><span class="ln-content">&nbsp;</span></div>
+            <div class="code-line"><span class="ln-content">      <span class="ty">Text</span><span class="pun">(</span><span class="str">`点击：${</span><span class="kw">this</span><span class="pun">.</span><span class="id">count</span><span class="str">}`</span><span class="pun">)</span></span></div>
+            <div class="code-line"><span class="ln-content">        <span class="pun">.</span><span class="fn">fontSize</span><span class="pun">(</span><span class="num">16</span><span class="pun">)</span></span></div>
+            <div class="code-line"><span class="ln-content">        <span class="pun">.</span><span class="fn">fontColor</span><span class="pun">(</span><span class="str">'#A1A1AA'</span><span class="pun">)</span></span></div>
+            <div class="code-line"><span class="ln-content">&nbsp;</span></div>
+            <div class="code-line"><span class="ln-content">      <span class="ty">Button</span><span class="pun">(</span><span class="str">'增加'</span><span class="pun">)</span></span></div>
+            <div class="code-line"><span class="ln-content">        <span class="pun">.</span><span class="fn">onClick</span><span class="pun">(()</span> <span class="op">=&gt;</span> <span class="pun">{</span> <span class="kw">this</span><span class="pun">.</span><span class="id">count</span> <span class="op">+=</span> <span class="num">1</span><span class="pun">;</span> <span class="pun">})</span></span></div>
+            <div class="code-line"><span class="ln-content">        <span class="pun">.</span><span class="fn">width</span><span class="pun">(</span><span class="num">120</span><span class="pun">)</span></span></div>
+            <div class="code-line"><span class="ln-content">    <span class="pun">}</span></span></div>
+            <div class="code-line"><span class="ln-content">    <span class="pun">.</span><span class="fn">justifyContent</span><span class="pun">(</span><span class="ty">FlexAlign</span><span class="pun">.</span><span class="id">Center</span><span class="pun">)</span></span></div>
+            <div class="code-line"><span class="ln-content">  <span class="pun">}</span></span></div>
+            <div class="code-line"><span class="ln-content"><span class="pun">}</span></span></div>
+          </div>
+        </div>
+
+        <div class="splitter-h"></div>
+
+        <div class="bottom-panel" id="bottomPanel">
+          <div class="panel-tabs">
+            <button class="panel-tab" type="button">问题</button>
+            <button class="panel-tab" type="button">输出</button>
+            <button class="panel-tab active" type="button">终端</button>
+            <div class="panel-actions">
+              <button class="sidebar-icon-btn" type="button" title="折叠面板" onclick="togglePanel()">
+                <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div><span class="prompt">➜</span> hvigorw assembleHap</div>
+            <div class="dim">&gt; hvigor <span class="ok">BUILD SUCCESSFUL</span> in 2.1s</div>
+            <div><span class="prompt">➜</span> hdc install entry-default-signed.hap</div>
+            <div class="ok">App installed successfully.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="status-bar">
+      <div class="status-item"><span class="status-dot"></span> 平板横屏 · Wi‑Fi 调试</div>
+      <div class="status-spacer"></div>
+      <div class="status-item">ArkTS</div>
+      <div class="status-item">API 12</div>
+    </footer>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    }
+    function togglePanel() {
+      document.getElementById('tablet').classList.toggle('collapsed');
+    }
+  </script>
+</body>
+</html>
